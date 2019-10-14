@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<ui:composition template="../template/layout.xhtml">
+		<ui:define name="content">
+			<h:form>
+				<br />
+				<p:commandButton value="Novo" action="cadastrar" />
+				<br />
+				<br />
+				<p:dataTable var="centro" value="#{centroController.centros}" rows="10" paginator="true">
+					<p:column headerText="Código" width="100">
+						<h:outputText value="#{centro.CDCENTRO}" />
+					</p:column>
+
+					<p:column headerText="Nome" width="200">
+						<h:outputText value="#{centro.DSCENTRO}" />
+					</p:column>
+					
+					<p:column headerText="Editar" width="200">
+						<p:commandButton value="" action="#{centroController.editar(centro)}" icon="pi pi-pencil"/>
+					</p:column>
+					<p:column headerText="Excluir" width="200">
+						
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
