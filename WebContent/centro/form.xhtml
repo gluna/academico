@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>   
+	
+ 			<h:panelGrid columns="2" cellpadding="3">		
+			
+				<p:outputLabel value="Código"/><p:inputText  value="#{centroController.centro.CDCENTRO}" maxlength="4" style="width:130px" onkeyup="value=value.toUpperCase()"/>
+				<p:outputLabel value="Descrição"/><p:inputText  value="#{centroController.centro.DSCENTRO}" maxlength="50" style="width:600px" onkeyup="value=value.toUpperCase()"/>
+				<p:outputLabel value="Dt. Inicio"/><p:calendar  value="#{centroController.centro.DTINICIO}" showOn="button" pattern="dd/MM/yyyy" mask="true"/>
+				<p:outputLabel value="Ano/Período Inicio"/><p:inputMask value="#{centroController.centro.ANOPERIODOINICIO}"  mask="9999/99" converter="convertAnoPeriodo"/>
+				<p:outputLabel value="Dt. Término"/><p:calendar value="#{centroController.centro.DTTERMINO}" showOn="button" pattern="dd/MM/yyyy" mask="true"/>
+				<p:outputLabel value="Ano/Período Término"/><p:inputMask  value="#{centroController.centro.ANOPERIODOTERMINO}" mask="9999/99" converter="convertAnoPeriodo" />
+			
+			</h:panelGrid>
+	
+ </h:body> 
+</html>

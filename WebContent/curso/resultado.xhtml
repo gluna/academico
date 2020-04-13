@@ -9,19 +9,11 @@
 <h:body>
 
 	<ui:composition template="../template/layout.xhtml">
-		<ui:define name="content" >
-		
-		<h:form style="margin-top:20px; margin-left:5%; margin-right:5%">
-				
-				<ui:include src="form.xhtml" >
-				
-				</ui:include>
-			
-			
-				<p:commandButton value="Salvar"  action="#{centroController.salvar}"/>
-			
+		<ui:define name="content">
+			<h:form>
+			  Salvo com Sucesso!!!<br/>
+			  <p:commandLink value="Voltar" action="index"/>
 			</h:form>
-			
 		</ui:define>
 	</ui:composition>
 

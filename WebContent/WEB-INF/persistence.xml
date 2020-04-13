@@ -6,7 +6,7 @@
 
 	<persistence-unit name="teste" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>teste.modelos.Recurso</class>
+		
 		<properties>
 			<property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/teste.fdb" />
 			<property name="hibernate.connection.password" value="masterkey" />

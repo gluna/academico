@@ -6,10 +6,11 @@
 
 	<persistence-unit name="academico">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>academicos.modelos.Recurso</class>
+		<class>academicos.modelos.Curso</class>
 		<class>academicos.modelos.Centro</class>
 		<properties>
-			<property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/teste.fdb" />
+			<!-- <property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/teste.fdb" />  -->
+			<property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/graduacao.gdb" />
 			<property name="hibernate.connection.password" value="masterkey" />
 			<property name="hibernate.connection.username" value="sysdba" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.FirebirdDialect" />

@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+          "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:body>
+
+	<ui:composition template="../template/layout.xhtml">
+		<ui:define name="content">
+			<h:form style="margin-left: 10%; margin-right: 10%">
+			    <br /><br />
+			    <p:accordionPanel>
+			    	<p:tab title="Consulta">
+			    		<h:panelGrid columns="2" cellpadding="3">		
+			
+							<p:outputLabel value="Nome"/><p:inputText  value="#{cursoController.curso.DSCURSO}" maxlength="80" style="width:700px" onkeyup="value=value.toUpperCase()"/>
+							<p:outputLabel value="Centro"/>
+							<p:selectOneMenu id="centro" value="#{cursoController.curso.CENTRO}" style="width:125px">
+					            <f:selectItem itemLabel="Select One" itemValue="" />
+					            <f:selectItems value="#{centroController.centros}" var="c" itemLabel="#{c.CDCENTRO}" itemValue="#{C}"/>
+        					</p:selectOneMenu>
+							<!-- <p:outputLabel value="Centro"/><p:inputText  value="#{cursoController.curso.CENTRO.CDCENTRO}" maxlength="4" style="width:100px" onkeyup="value=value.toUpperCase()"/> -->
+							<p:commandButton value="Consultar" action="#{cursoController.consultar}" icon="pi pi-search" ajax="false"/>
+			
+						</h:panelGrid>
+			    	</p:tab>
+			    </p:accordionPanel>
+				<br />
+				<p:commandButton value="Novo" action="cadastrar" icon="pi pi-file"/>
+				<br />
+				<br />
+				<p:dataTable var="curso" value="#{cursoController.cursos}" rows="15" paginator="true" 
+				             resizableColumns="true" rendered="true">
+					
+					<p:column headerText="Nome" >
+						<h:outputText value="#{curso.DSCURSO}" />
+					</p:column>
+
+					<p:column headerText="Centro" width="100">
+						<h:outputText value="#{curso.CENTRO.CDCENTRO}" />
+					</p:column>
+					
+					<p:column headerText="Editar" style="text-align: center" width="80">
+						<p:commandButton action="#{cursoController.editar(curso)}" icon="pi pi-pencil"/>
+					</p:column>
+					
+					<p:column headerText="Excluir" style="text-align: center" width="80">
+						<p:commandButton action="#{cursoController.excluir(curso)}" icon="pi pi-trash"/>
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+
+</h:body>
+</html>
