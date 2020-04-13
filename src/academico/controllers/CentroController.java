@@ -37,6 +37,13 @@ public class CentroController {
 		centro = c;
 		return "/centro/atualizar";
 	}
+	
+	public String excluir(Centro c) {
+		entityManager.getTransaction().begin();
+		entityManager.remove(c);
+		entityManager.getTransaction().commit();		
+		return "resultado";
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Centro> getCentros() {

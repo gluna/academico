@@ -32,4 +32,7 @@ public class UtilController {
 	public void setEm(EntityManager em) {
 		UtilController.em = em;
 	}
+	
+	//TODO criar chave primaria na tabela de centro
+	
 }

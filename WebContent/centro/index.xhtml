@@ -10,25 +10,28 @@
 
 	<ui:composition template="../template/layout.xhtml">
 		<ui:define name="content">
-			<h:form>
+			<h:form style="margin-left: 10%; margin-right: 10%">
 				<br />
-				<p:commandButton value="Novo" action="cadastrar" />
+				<p:commandButton value="Novo" action="cadastrar" icon="pi pi-file"/>
 				<br />
 				<br />
-				<p:dataTable var="centro" value="#{centroController.centros}" rows="10" paginator="true">
+				<p:dataTable var="centro" value="#{centroController.centros}" rows="15" paginator="true" 
+				             resizableColumns="true" >
+					
 					<p:column headerText="Código" width="100">
 						<h:outputText value="#{centro.CDCENTRO}" />
 					</p:column>
 
-					<p:column headerText="Nome" width="200">
+					<p:column headerText="Nome" >
 						<h:outputText value="#{centro.DSCENTRO}" />
 					</p:column>
 					
-					<p:column headerText="Editar" width="200">
-						<p:commandButton value="" action="#{centroController.editar(centro)}" icon="pi pi-pencil"/>
+					<p:column headerText="Editar" style="text-align: center" width="80">
+						<p:commandButton action="#{centroController.editar(centro)}" icon="pi pi-pencil"/>
 					</p:column>
-					<p:column headerText="Excluir" width="200">
-						
+					
+					<p:column headerText="Excluir" style="text-align: center" width="80">
+						<p:commandButton action="#{centroController.excluir(centro)}" icon="pi pi-trash"/>
 					</p:column>
 
 				</p:dataTable>
