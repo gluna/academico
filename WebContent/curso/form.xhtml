@@ -9,15 +9,27 @@
 
 <h:body>   
 	
- 			<h:panelGrid columns="2" cellpadding="3">		
+ 			<h:panelGrid columns="2" cellpadding="3" style="grid">		
 			
-				<p:outputLabel value="Código"/><p:inputText  value="#{centroController.centro.CDCENTRO}" maxlength="4" style="width:130px" onkeyup="value=value.toUpperCase()"/>
-				<p:outputLabel value="Descrição"/><p:inputText  value="#{centroController.centro.DSCENTRO}" maxlength="50" style="width:600px" onkeyup="value=value.toUpperCase()"/>
-				<p:outputLabel value="Dt. Inicio"/><p:calendar  value="#{centroController.centro.DTINICIO}" showOn="button" pattern="dd/MM/yyyy" mask="true"/>
-				<p:outputLabel value="Ano/Período Inicio"/><p:inputMask value="#{centroController.centro.ANOPERIODOINICIO}"  mask="9999/99" converter="convertAnoPeriodo"/>
-				<p:outputLabel value="Dt. Término"/><p:calendar value="#{centroController.centro.DTTERMINO}" showOn="button" pattern="dd/MM/yyyy" mask="true"/>
-				<p:outputLabel value="Ano/Período Término"/><p:inputMask  value="#{centroController.centro.ANOPERIODOTERMINO}" mask="9999/99" converter="convertAnoPeriodo" />
-			
+				<p:outputLabel value="Nome"/><p:inputText required="true" requiredMessage="Nome é um campo obrigatório" value="#{cursoController.curso.DSCURSO}" maxlength="80" style="width:400px" onkeyup="value=value.toUpperCase()"/>
+				
+				<p:outputLabel value="Centro"/>
+				<p:selectOneMenu id="c" value="#{cursoController.centro}" style="width:150px" required="true">
+					<f:selectItem itemValue=""/>
+					<f:selectItems id="itens" value="#{centroController.centros}" var="centro" itemValue="#{centro.CDCENTRO}" itemLabel="#{centro.CDCENTRO}"/>
+				</p:selectOneMenu>
+				<p:outputLabel value="Dt. Inicio"/><p:calendar  value="#{cursoController.curso.DTINICIO}" showOn="button" pattern="dd/MM/yyyy" mask="true"/>			
+				<p:outputLabel value="Ano/Período Inicio"/><p:inputMask value="#{cursoController.curso.ANOPERIODOINICIO}"  mask="9999/99" converter="convertAnoPeriodo"/>
+				<p:outputLabel value="Dt. Término"/><p:calendar value="#{cursoController.curso.DTTERMINO}" showOn="button" pattern="dd/MM/yyyy" mask="true"/>
+				<p:outputLabel value="Ano/Período Término"/><p:inputMask  value="#{cursoController.curso.ANOPERIODOTERMINO}" mask="9999/99" converter="convertAnoPeriodo" />
+				<p:outputLabel value="Autorização"/><p:inputText  value="#{cursoController.curso.AUTORIZACAO}" maxlength="150" style="width:800px" />
+				<p:outputLabel value="Reconhecimento"/><p:inputText  value="#{cursoController.curso.RECONHECIMENTO}" maxlength="80" style="width:800px" />
+				<p:outputLabel value="Publicação D.O."/><p:inputText  value="#{cursoController.curso.PUBLICACAODO}" maxlength="150" style="width:800px" />
+				<p:outputLabel value="Título"/><p:inputText  value="#{cursoController.curso.TITULO}" maxlength="60" style="width:400px" onkeyup="value=value.toUpperCase()"/>
+				<p:outputLabel value="Título Feminino"/><p:inputText  value="#{cursoController.curso.TITULO_FEMININO}" maxlength="80" style="width:400px" onkeyup="value=value.toUpperCase()"/>
+				<p:outputLabel value="Carga Horária"/><p:inputText  value="#{cursoController.curso.CH}" maxlength="10" style="width:100px" />
+				<p:outputLabel value="Semestre Integralização"/><p:spinner value="#{cursoController.curso.TEMPOINTEGRALIZACAO}" style="width:100px" />
+				
 			</h:panelGrid>
 	
  </h:body> 

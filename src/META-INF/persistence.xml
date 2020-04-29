@@ -8,6 +8,7 @@
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<class>academicos.modelos.Curso</class>
 		<class>academicos.modelos.Centro</class>
+		
 		<properties>
 			<!-- <property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/teste.fdb" />  -->
 			<property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/graduacao.gdb" />

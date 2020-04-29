@@ -12,7 +12,6 @@ import javax.persistence.ManyToOne;
 public class Curso {
 	
 	@Id
-	@Column
 	String CDCURSO;
 	
 	@ManyToOne
