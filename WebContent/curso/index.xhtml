@@ -18,10 +18,10 @@
 			
 							<p:outputLabel value="Nome"/><p:inputText  value="#{cursoController.curso.DSCURSO}" maxlength="80" style="width:700px" onkeyup="value=value.toUpperCase()"/>
 							<p:outputLabel value="Centro"/>
-							<p:selectOneMenu id="c" value="#{cursoController.centro}" style="width:300px">
+							<p:selectOneMenu id="centro" value="#{cursoController.centro}" style="width:300px" converter="convertCentro">
 							
 					            <f:selectItem itemValue=""/>
-					            <f:selectItems id="itens" value="#{centroController.centros}" var="centro" itemValue="#{centro.CDCENTRO}" itemLabel="#{centro.CDCENTRO}"/>
+					            <f:selectItems value="#{centroController.centros}" var="centro" itemValue="#{centro}" itemLabel="#{centro.CDCENTRO}"/> -->
 					            
         					</p:selectOneMenu>
 							<p:commandButton value="Consultar" action="#{cursoController.consultar}" icon="pi pi-search" update="form1:table1" />
@@ -40,15 +40,15 @@
 						<h:outputText value="#{curso.DSCURSO}" />
 					</p:column>
 
-					<p:column headerText="Centro" width="100" style="text-align: center">
+					<p:column headerText="Centro" width="90" style="text-align: center">
 						<h:outputText value="#{curso.CENTRO.CDCENTRO}" />
 					</p:column>
 					
-					<p:column headerText="Editar" style="text-align: center" width="80">
+					<p:column headerText="Editar" style="text-align: center" width="70">
 						<p:commandButton action="#{cursoController.editar(curso)}"  icon="pi pi-pencil" />
 					</p:column>
 					
-					<p:column headerText="Excluir" style="text-align: center" width="80">
+					<p:column headerText="Excluir" style="text-align: center" width="70">
 						<p:commandButton action="#{cursoController.excluir(curso)}" icon="pi pi-trash"/>
 					</p:column>
 					

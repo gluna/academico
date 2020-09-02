@@ -47,6 +47,15 @@ public class UtilController {
 		return codigo;
 	}
 	
+	public static String strZero(String campo, Integer tamanho) {
+		
+		while(campo.length() < tamanho) {
+			campo = "0"+campo;
+		}
+		
+		return campo;
+	}
+	
 	//TODO criar chave primaria na tabela de centro
 	
 }

@@ -1,17 +1,25 @@
 package academico.controllers;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 
 import academicos.modelos.Centro;
 
 @ManagedBean
-public class CentroController {
+@SessionScoped
+public class CentroController implements Serializable{
 	
+	private static final long serialVersionUID = 6115226572598184538L;
+
 	private static EntityManager entityManager = UtilController.GetEntityManager();
+	
+	/*@PersistenceUnit(unitName = "academico")
+	private EntityManager entityManager;*/
 	
 	List<Centro> centros;
 	Centro centro = new Centro();;

@@ -1,33 +1,41 @@
 package academicos.modelos;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 
 @Entity
-public class Centro {
+public class Centro implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 
 	@Id
 	@Column
-	String CDCENTRO;
+	private String CDCENTRO;
 
 	@Column
-	String DSCENTRO;
+	private String DSCENTRO;
 
 	@Column
-	Date DTINICIO;
+	private Date DTINICIO;
 
 	@Column
-	String ANOPERIODOINICIO;
+	private String ANOPERIODOINICIO;
 
 	@Column
-	Date DTTERMINO;
+	private Date DTTERMINO;
 
 	@Column
-	String ANOPERIODOTERMINO;
-
+	private String ANOPERIODOTERMINO;
+	
+	@JoinColumn(name = "CDCENTRO")
+	private ArrayList<Curso> cursos;
+	
 	public String getCDCENTRO() {
 		return CDCENTRO;
 	}
@@ -75,5 +83,4 @@ public class Centro {
 	public void setANOPERIODOTERMINO(String aNOPERIODOTERMINO) {
 		ANOPERIODOTERMINO = aNOPERIODOTERMINO;
 	}
-
 }

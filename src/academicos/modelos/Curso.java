@@ -1,5 +1,6 @@
 package academicos.modelos;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -9,62 +10,64 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Curso {
+public class Curso implements Serializable{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	String CDCURSO;
+	private String CDCURSO;
 	
 	@ManyToOne
 	@JoinColumn(name = "CDCENTRO")
-	Centro CENTRO;
+	private Centro CENTRO;
 	
 	@Column
-	String DSCURSO;
+	private String DSCURSO;
 	
 	@Column
-	Date   DTINICIO;
+	private Date DTINICIO;
 	
 	@Column
-	String ANOPERIODOINICIO;
+	private String ANOPERIODOINICIO;
 	
 	@Column
-	Date   DTTERMINO;
+	private Date DTTERMINO;
 	
 	@Column
-	String ANOPERIODOTERMINO;
+	private String ANOPERIODOTERMINO;
 	
 	@Column
-	String AUTORIZACAO;
+	private String AUTORIZACAO;
 	
 	@Column
-	String RECONHECIMENTO;
+	private String RECONHECIMENTO;
 	
 	@Column
-	String PUBLICACAODO;
+	private String PUBLICACAODO;
 	
 	@Column
-	String FLGENC;
+	private String FLGENC;
 	
 	@Column
-	String ANOENC;
+	private String ANOENC;
 	
 	@Column
-	String TITULO;
+	private String TITULO;
 	
 	@Column
-	String ABREVIADO;
+	private String ABREVIADO;
 	
 	@Column
-	String CODIGOINEP;
+	private String CODIGOINEP;
 	
 	@Column
-	String CH;
+	private String CH;
 	
 	@Column
-	String TITULO_FEMININO;
+	private String TITULO_FEMININO;
 	
 	@Column
-	String TEMPOINTEGRALIZACAO;
+	private String TEMPOINTEGRALIZACAO;
 
 	public String getCDCURSO() {
 		return CDCURSO;
@@ -209,5 +212,6 @@ public class Curso {
 	public void setCENTRO(Centro cENTRO) {
 		CENTRO = cENTRO;
 	}
+
 
 }

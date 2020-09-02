@@ -1,31 +1,45 @@
 package academico.controllers;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 
 import academicos.modelos.Centro;
 import academicos.modelos.Curso;
 
 @ManagedBean
 @SessionScoped
-public class CursoController {
+public class CursoController implements Serializable{
 	
+	private static final long serialVersionUID = -7060747349258640069L;
+
+	private static EntityManager entityManager = UtilController.GetEntityManager();
 	
-	private static EntityManager entityManager = Persistence.createEntityManagerFactory("academico").createEntityManager();
+	/*@PersistenceUnit(unitName = "academico")
+	private EntityManager entityManager;*/
 	
     public Curso curso = new Curso();
-    public String centro = new String();
+    public Centro centro = new Centro();
     List<Curso> cursos = new ArrayList<Curso>();
+    
+    public String index() {
+
+    	curso = new Curso();
+        centro = new Centro();
+        cursos = new ArrayList<Curso>();
+    	
+    	return "/curso/index";
+    }
     
     
 	public String salvar() {
-		Centro c = (Centro)entityManager.createQuery("select c from Centro c where c.CDCENTRO = :pcentro").setParameter("pcentro", centro).getSingleResult();
-		curso.setCENTRO(c);
+		//Centro c = (Centro)entityManager.createQuery("select c from Centro c where c.CDCENTRO = :pcentro").setParameter("pcentro", centro).getSingleResult();
+		//curso.setCENTRO(c);
+		curso.setCDCURSO(gerarCodigo());
 		Curso newcurso = new Curso();
 		newcurso = curso;
 		entityManager.getTransaction().begin();
@@ -35,6 +49,15 @@ public class CursoController {
 		return "resultado";
 	}
 	
+	private String gerarCodigo() {
+		
+		String codcurso = (String) entityManager.createQuery("SELECT GEN_ID( GEN_CURSO_ID, 1 ) FROM RDB$DATABASE").getSingleResult();
+		
+		codcurso = UtilController.strZero(codcurso, 10);
+		
+		return codcurso;
+	}
+
 	public String update() {
 		entityManager.getTransaction().begin();
 		entityManager.merge(curso);
@@ -55,11 +78,12 @@ public class CursoController {
 		return "resultado";
 	}
 	
+
 	@SuppressWarnings("unchecked")
 	public String consultar() {
 		
 		Centro c = new Centro();
-		if(!centro.equals("")) {
+		if(!centro.getCDCENTRO().equals("")) {
 			c = (Centro)entityManager.createQuery("select c from Centro c where c.CDCENTRO = :pcentro").setParameter("pcentro", centro).getSingleResult();
 		}else {
 			c.setCDCENTRO("%");
@@ -91,11 +115,11 @@ public class CursoController {
 		return cursos;
 	}
 
-	public String getCentro() {
+	public Centro getCentro() {
 		return centro;
 	}
 
-	public void setCentro(String centro) {
+	public void setCentro(Centro centro) {
 		this.centro = centro;
 	}
 
