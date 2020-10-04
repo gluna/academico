@@ -19,13 +19,13 @@ public class CentroConverter implements Converter, Serializable{
 	public Object getAsObject(FacesContext arg0, UIComponent arg1, String centro) {
 		
 		CentroController controller = new CentroController();
-		//Centro cent = new Centro();
+		Centro cent = new Centro();
 		for(Centro c : controller.getCentros() ) {
 			if(c.getCDCENTRO().equals(centro)) {
 				return c; 
 			}
 		}
-		return centro;
+		return cent;
 	}
 	
 	@Override
@@ -35,7 +35,7 @@ public class CentroConverter implements Converter, Serializable{
 			Centro c = (Centro)centro;
 			return c.getCDCENTRO() != null && !c.getCDCENTRO().isEmpty() ? c.getCDCENTRO() : null;
 		}
-		return null;
+		return "";
 	}
 	
 }

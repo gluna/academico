@@ -19,9 +19,6 @@ public class CursoController implements Serializable{
 
 	private static EntityManager entityManager = UtilController.GetEntityManager();
 	
-	/*@PersistenceUnit(unitName = "academico")
-	private EntityManager entityManager;*/
-	
     public Curso curso = new Curso();
     public Centro centro = new Centro();
     List<Curso> cursos = new ArrayList<Curso>();
@@ -51,7 +48,7 @@ public class CursoController implements Serializable{
 	
 	private String gerarCodigo() {
 		
-		String codcurso = (String) entityManager.createQuery("SELECT GEN_ID( GEN_CURSO_ID, 1 ) FROM RDB$DATABASE").getSingleResult();
+		String codcurso = (String) entityManager.createQuery("SELECT max(c.CDCURSO) from Curso c ").getSingleResult();
 		
 		codcurso = UtilController.strZero(codcurso, 10);
 		
@@ -78,20 +75,34 @@ public class CursoController implements Serializable{
 		return "resultado";
 	}
 	
+	public String cadastrar() {
+    	curso = new Curso();
+        centro = new Centro();
+        cursos = new ArrayList<Curso>();
+    	
+    	return "/curso/cadastrar";
+		
+	}
+	
 
 	@SuppressWarnings("unchecked")
 	public String consultar() {
 		
 		Centro c = new Centro();
-		if(!centro.getCDCENTRO().equals("")) {
-			c = (Centro)entityManager.createQuery("select c from Centro c where c.CDCENTRO = :pcentro").setParameter("pcentro", centro).getSingleResult();
+		
+		if(centro == null) {
+			centro = new Centro();
+		}
+		
+		if(centro.getCDCENTRO() != null) {
+			c = (Centro)entityManager.createQuery("select c from Centro c where c.CDCENTRO = :pcentro").setParameter("pcentro", centro.getCDCENTRO()).getSingleResult();
 		}else {
 			c.setCDCENTRO("%");
 		}
 		curso.setCENTRO(c);
 		List<Curso> c2 = new ArrayList<Curso>();
 		c2 = (List<Curso>) entityManager.createQuery("select c from Curso c where c.DSCURSO like :pcurso and c.CENTRO.CDCENTRO like :pcentro").
-				               setParameter("pcurso", curso.getDSCURSO()+"%").setParameter("pcentro", curso.getCENTRO().getCDCENTRO()).getResultList();
+				               setParameter("pcurso", "%"+curso.getDSCURSO()+"%").setParameter("pcentro", curso.getCENTRO().getCDCENTRO()).getResultList();
 		
 		setCursos(c2);
 		
