@@ -8,8 +8,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 
-import academicos.modelos.Centro;
-import academicos.modelos.Curso;
+import academico.modelos.Centro;
+import academico.modelos.Curso;
 
 @ManagedBean
 @SessionScoped

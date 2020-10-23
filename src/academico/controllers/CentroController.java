@@ -8,7 +8,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 
-import academicos.modelos.Centro;
+import academico.modelos.Centro;
 
 @ManagedBean
 @SessionScoped

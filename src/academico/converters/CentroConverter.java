@@ -8,7 +8,7 @@ import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 
 import academico.controllers.CentroController;
-import academicos.modelos.Centro;
+import academico.modelos.Centro;
 
 @FacesConverter( value="convertCentro", forClass = Centro.class )  
 public class CentroConverter implements Converter, Serializable{
