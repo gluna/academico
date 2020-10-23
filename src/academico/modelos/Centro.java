@@ -1,4 +1,4 @@
-package academicos.modelos;
+package academico.modelos;
 
 import java.io.Serializable;
 import java.util.ArrayList;

@@ -6,18 +6,19 @@
 
 	<persistence-unit name="academico">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>academicos.modelos.Curso</class>
-		<class>academicos.modelos.Centro</class>
+		<class>academico.modelos.Curso</class>
+		<class>academico.modelos.Centro</class>
 		
 		<properties>
 			<!-- <property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/teste.fdb" />  -->
-			<property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/graduacao.gdb" />
+			<property name="hibernate.connection.url" value="jdbc:firebirdsql:localhost/3050:/home/gustavo/Sistemas/grad.fdb" />
 			<property name="hibernate.connection.password" value="masterkey" />
 			<property name="hibernate.connection.username" value="sysdba" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.FirebirdDialect" />
 			<property name="hibernate.connection.driver_class" value="org.firebirdsql.jdbc.FBDriver" />
 			<property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider" />
 			<property name="hibernate.hbm2ddl.auto" value="update" />
+			
 		</properties>
 	</persistence-unit>
 </persistence>   
