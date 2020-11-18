@@ -34,11 +34,9 @@ public class CursoController implements Serializable{
     
     
 	public String salvar() {
-		//Centro c = (Centro)entityManager.createQuery("select c from Centro c where c.CDCENTRO = :pcentro").setParameter("pcentro", centro).getSingleResult();
-		//curso.setCENTRO(c);
-		//curso.setCDCURSO(gerarCodigo());
 		Curso newcurso = new Curso();
 		newcurso = curso;
+		newcurso.setCDCURSO(geraCodCurso());
 		entityManager.getTransaction().begin();
 		entityManager. persist(newcurso);
 		entityManager.getTransaction().commit();
@@ -46,14 +44,28 @@ public class CursoController implements Serializable{
 		return "resultado";
 	}
 	
-	private String gerarCodigo() {
+	private String geraCodCurso() {
+		Curso c = new Curso();
+		try {
+			entityManager.getTransaction().begin();
+			c = (Curso)entityManager.createQuery(" select MAX(c) from Curso c where c.CDCURSO <> 'XXXXXXXXXX' ").getSingleResult();
+			entityManager.getTransaction().commit();
+		}catch(Exception e) {
+			e.printStackTrace();
+			
+		}
+		String cdcurso = c.getCDCURSO();
+		Integer cod = Integer.parseInt(cdcurso);
+		cod++;
+		cdcurso = cod.toString();
 		
-		String codcurso = (String) entityManager.createQuery("SELECT GEN_ID( GEN_CURSO_ID, 1 ) FROM RDB$DATABASE ").getSingleResult();
+		while(cdcurso.length() < 10) {
+			cdcurso = "0"+cdcurso;
+		}
 		
-		codcurso = UtilController.strZero(codcurso, 10);
-		
-		return codcurso;
+		return cdcurso;
 	}
+
 
 	public String update() {
 		entityManager.getTransaction().begin();
